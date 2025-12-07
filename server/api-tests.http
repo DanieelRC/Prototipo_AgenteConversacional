@@ -1,0 +1,203 @@
+### Variables
+@baseUrl = http://localhost:3000
+@userId = 550e8400-e29b-41d4-a716-446655440000
+
+###############################################
+# 1. Health Check
+###############################################
+
+### Health Check
+GET {{baseUrl}}/health
+
+###############################################
+# 2. Consultas Técnicas
+###############################################
+
+### Consulta: Lector biométrico para exterior
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Necesito un lector biométrico para uso exterior con WiFi"
+}
+
+### Consulta: Tarjetas de proximidad
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "¿Qué tarjetas de proximidad tienen disponibles?"
+}
+
+### Consulta: Impresora de credenciales
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Busco una impresora para hacer credenciales de empleados"
+}
+
+### Consulta: Software de control de asistencia
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "¿Tienen software para control de asistencia y nómina?"
+}
+
+### Consulta: Torniquete
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Necesito un torniquete para controlar el acceso en mi empresa"
+}
+
+###############################################
+# 3. Solicitudes de Cotización
+###############################################
+
+### Cotización: 100 tarjetas HID
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Cotízame 100 tarjetas HID ProxCard II"
+}
+
+### Cotización: 5 lectores biométricos
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Dame precio de 5 lectores biométricos Suprema"
+}
+
+### Cotización: Software
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Cuánto cuesta la licencia del software CET.NET para 500 empleados"
+}
+
+### Cotización: Múltiples productos
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Cotízame 2 torniquetes y 200 tarjetas de proximidad"
+}
+
+###############################################
+# 4. Consultas Complejas
+###############################################
+
+### Solución completa para empresa
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Necesito una solución completa para control de acceso en una empresa de 200 empleados. ¿Qué me recomiendas?"
+}
+
+### Comparación de productos
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "¿Cuál es la diferencia entre los lectores biométricos que tienen?"
+}
+
+### Especificaciones técnicas
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "¿Qué especificaciones técnicas tiene el BioStation 2?"
+}
+
+### Compatibilidad
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "¿El software CET.NET es compatible con Windows 11?"
+}
+
+###############################################
+# 5. Sincronización de Productos
+###############################################
+
+### Sincronizar nuevo producto
+POST {{baseUrl}}/api/products/sync
+Content-Type: application/json
+
+{
+  "categoria_id": 1,
+  "sku": "TEST-NUEVO-001",
+  "nombre": "Lector Biométrico de Prueba",
+  "marca": "TestBrand",
+  "descripcion": "Lector biométrico con sensor óptico de alta precisión para pruebas",
+  "precio_lista": 1000.00,
+  "stock_actual": 10,
+  "unidad_medida": "pieza",
+  "especificaciones_tecnicas": {
+    "tipo_sensor": "Óptico",
+    "conectividad": ["TCP/IP", "USB"],
+    "capacidad_usuarios": 5000,
+    "uso": "Interior"
+  }
+}
+
+###############################################
+# 6. Pruebas de Edge Cases
+###############################################
+
+### Mensaje vacío (debería dar error)
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": ""
+}
+
+### Sin userId (debería dar error)
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "message": "Hola"
+}
+
+### Producto inexistente
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Cotízame 10 cámaras de seguridad 4K"
+}
+
+### Stock insuficiente
+POST {{baseUrl}}/api/chat/message
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "message": "Cotízame 100 torniquetes TS2000"
+}
